@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springexam03.mapper.BoardMapper">
+
+    <sql id="search">
+<!--        <where>-->
+<!--            <if test="types != null and types.length > 0">-->
+<!--                <foreach collection="types" item="type" open="(" close= ")" separator="OR">-->
+<!--                    <if test="type == 't'.toString()">-->
+<!--                        title like concat('%',#{keyword},'%')-->
+<!--                    </if>-->
+<!--                    <if test="type == 'c'.toString()">-->
+<!--                        content like concat('%',#{keyword},'%')-->
+<!--                    </if>-->
+<!--                </foreach>-->
+<!--            </if>-->
+<!--            <if test="from != null and to != null">-->
+<!--                <trim prefix="and">-->
+<!--                    postdate between #{from} and #{to)-->
+<!--                </trim>-->
+<!--            </if>-->
+<!--        </where>-->
+        <where>
+            <if test="types != null and types.length>0">
+                <foreach collection="types" item="type" open="(" close= ")" separator="OR">
+                    <if test="type=='t'.toString()">
+                        title like concat('%', #{keyword}, '%')
+                    </if>
+                    <if test="type=='c'.toString()">
+                        content like concat('%', #{keyword}, '%')
+                    </if>
+                </foreach>
+            </if>
+            <if test="from != null and to != null">
+                <trim prefix="and">
+                    postdate between  #{from} and #{to}
+                </trim>
+            </if>
+        </where>
+    </sql>
+
+    <select id="pagingCount" resultType="int">
+        select count(*) from tbl_board
+        <include refid="search"></include>
+
+    </select>
+    <select id="pagingList" resultType="com.example.springexam03.vo.BoardVO">
+        select * from tbl_board
+        <include refid="search"></include>
+        order by bno desc limit #{skip}, #{size}
+    </select>
+
+    <select id="getTime" resultType="String">
+        select now()
+    </select>
+    <select id="totalCount" resultType="int">
+        select count(*) from tbl_board
+    </select>
+
+    <select id="get" resultType="com.example.springexam03.vo.BoardVO">
+        select * from tbl_board where bno=#{bno}
+    </select>
+    <update id="visitCountUpdate">
+        update tbl_board set visitcount=visitcount+1 where bno=#{bno}
+    </update>
+    <update id="updateBoard">
+        update tbl_board set title=#{title}, content=#{content} where bno=#{bno}
+    </update>
+    <delete id="deleteBoard">
+        delete from tbl_board where bno=#{bno}
+    </delete>
+    <insert id="insertBoard">
+        insert into tbl_board(title,content,writer,postdate)
+        values(#{title},#{content},#{writer},#{postdate})
+    </insert>
+    <select id="getBoardList" resultType="com.example.springexam03.vo.BoardVO">
+        select * from tbl_board order by bno desc;
+    </select>
+    <update id="updateReplycount">
+        update tbl_board set replycount=replycount+#{amount} where bno=#{bno}
+    </update>
+</mapper>
