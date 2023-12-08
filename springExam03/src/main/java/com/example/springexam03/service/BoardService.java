@@ -5,7 +5,7 @@ import com.example.springexam03.dto.PageRequestDTO;
 import com.example.springexam03.dto.PageResponseDTO;
 
 import java.util.List;
-
+//BoardServiceImpl 클래스에서 이 인터페이스를 구현/ 게시글 조회, 수정, 삭제, 목록 조회, 등록, 페이징된 목록 조회 등의 메서드가 정의
 public interface BoardService {//게시글과 관련된 기능을 정의, 게시글의 조회,수정,삭제,목록,가져오기,
     BoardDTO view(int bno);//기능: 게시글 조회/ 파라미터: 게시글번호 (bno)/ 반환값:조회된 게시글 정보(BoardDTO)
     int modify(BoardDTO boardDTO);//기능: 게시글 수정/ 파라미터: 수정할 게시글 번호/ 반환값: 수정된 레코드의 수

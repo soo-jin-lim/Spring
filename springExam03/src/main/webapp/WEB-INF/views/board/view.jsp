@@ -18,7 +18,7 @@
 
         <div class="mb-3 mt-3">
             <label for="title">Title:</label>
-            <input type="text" class="form-control" id="title" value="${boardDTO.title}" readonl>
+            <input type="text" class="form-control" id="title" value="${boardDTO.title}" readonyl>
         </div>
         <div class="mb-3 mt-3">
             <label for="content">Content:</label>
@@ -141,6 +141,10 @@
     })
     document.querySelector("#list").addEventListener("click",function (e){
         self.location=`/board/list?bno=${boardDTO.bno}&${pageRequestDTO.link}`
+    })
+
+    $("#modify").click(function (e){
+        location.href="board/modify?bno="`${boardDTO.bno}&${pageRequestDTO.link}`
     })
 </script>
 

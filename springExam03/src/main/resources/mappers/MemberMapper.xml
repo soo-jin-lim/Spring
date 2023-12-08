@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springexam03.mapper.MemberMapper">
+
+    <insert id="insertMember">
+        insert into tbl_member(username,password,name,nikname)
+        values(#{username},#{password},#{name},#{nikname})
+    </insert>
+
+    <select id="readMember" resultType="com.example.springexam03.vo.MemberVO">
+        select * from tbl_member where username=#{username}
+    </select>
+
+
+    <select id="getMemberList" resultType="com.example.springexam03.vo.MemberVO">
+        select * from tbl_member
+    </select>
+    <update id="updateMember">
+        update tbl_member set password=#{password}, nikname=#{nikname}
+        where username=#{username}
+    </update>
+    <delete id="deleteMember">
+        delete from tbl_member where username=#{username}
+    </delete>
+    <select id="conformedUsername" resultType="int">
+        select count(*) from tbl_member where username=#{username}
+    </select>
+    <select id="conformedNikname" resultType="int">
+        select count(*) from tbl_member where nikname=#{nikname}
+    </select>
+</mapper>

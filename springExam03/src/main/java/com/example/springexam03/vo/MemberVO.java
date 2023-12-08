@@ -2,9 +2,7 @@ package com.example.springexam03.vo;
 
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.util.Date;
-
 @Data
 public class MemberVO {
     private String username;
@@ -13,4 +11,3 @@ public class MemberVO {
     private String nikname;
     private Date regdate;
 }
-

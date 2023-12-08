@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+//BoardService 인터페이스를 구현한 클래스/데이터베이스와의 상호 작용을 통해 게시글 정보를 조회, 수정, 삭제, 등록합니다.
 @Service
 @Log4j2
 @RequiredArgsConstructor
