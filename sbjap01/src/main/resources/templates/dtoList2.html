@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li th:each="sample,status:${dtoList}">
+        <span>[[${sample.name}]]</span>
+        <span>[[${sample.age}]]</span>
+
+<!--        <span th:text="${sample.name}"></span>-->
+<!--        <span th:text="${sample.age}"></span>-->
+    </li>
+</ul>
+</body>
+</html>

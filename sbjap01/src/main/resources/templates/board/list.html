@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>bno</th>
+            <th>title</th>
+            <th>writer</th>
+            <th>visitcount</th>
+            <th>postdate</th>
+        </tr>
+        <tr th:each="board, status:${boardList}">
+            <td>[[${board.bno}]]</td>
+            <td>[[${board.title}]]</td>
+            <td>[[${board.writer}]]</td>
+            <td>[[${board.visitcount}]]</td>
+            <td>[[${board.postdate}]]</td>
+
+
+        </tr>
+    </table>
+</body>
+</html>
